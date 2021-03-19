@@ -2,10 +2,10 @@ img = "";
 status ="";
 objects =[];
 
-
 function preload() {
     alarm = loadSound("Alarm.mp3");
 }
+
 function setup()
 {
     canvas = createCanvas(380,380);
@@ -35,10 +35,15 @@ function draw() {
     image(video,0,0,380,380);
 
     if(status != ""){
+        
+        r = random(255);
+        g = random(255);
+        b = random(255);
+
         objectDetector.detect(video, gotResult);
-        for ( i = 0; i< objects.length ; i++) {
+        for ( i = 0 ;i< objects.length ; i++) {
             human = objects[i].label;
-            if(human = "Human"){
+            if(human == "Human"){
                 document.getElementById("status").innerHTML= "Baby Is Here";
                 fill(r,g,b);
                 percent = floor(objects[i].confidence * 100);
